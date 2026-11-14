@@ -21,10 +21,34 @@ file watching are much faster there.
 | `pnpm typecheck`    | Generate route types + `tsc`        |
 | `pnpm format`       | Prettier (write)                    |
 | `pnpm format:check` | Prettier (check, used in CI)        |
+| `pnpm test`         | Content integrity + unit tests      |
+| `pnpm e2e`          | Playwright against a prod build     |
 
-CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck and build on every push and PR.
+### First-time Playwright setup (WSL/Linux)
+
+```sh
+pnpm exec playwright install chromium
+sudo env "PATH=$PATH" pnpm exec playwright install-deps chromium   # system libraries, once
+```
+
+CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck, unit tests, build and e2e on every push and PR.
 
 ## Editing content
 
-Coming in Phase 1: releases, shows, members, media and socials will live as typed data in
-`src/content/`, so announcing a show or release won't require touching page code.
+All band content lives as typed data in `src/content/`. Pages read it through `src/lib/content.ts`.
+
+| File          | What's in it                                       |
+| ------------- | -------------------------------------------------- |
+| `band.ts`     | Bio, genres, members                               |
+| `releases.ts` | Singles / EPs / albums — one object = one page     |
+| `shows.ts`    | Gigs; past shows move to the archive automatically |
+| `media.ts`    | Videos, photos, artwork, posters                   |
+| `socials.ts`  | Social profiles and contact emails                 |
+
+Release `status`: `draft` (hidden in production, visible in `pnpm dev`), `announced`
+(upcoming), `released`, `archived`. `pnpm test` checks the data — unique slugs, valid dates,
+https links, alt text on every image — so mistakes fail CI instead of shipping.
+
+Only add verified facts: no placeholder links, dates or credits.
+
+Design-system reference (dev only): http://localhost:3000/dev/type
