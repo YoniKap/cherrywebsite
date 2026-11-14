@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Doodle } from "@/components/ui/Doodle";
 import { ExternalLink } from "@/components/ui/ExternalLink";
-import { getSocials } from "@/lib/content";
+import { getContacts, getSocials } from "@/lib/content";
 import { NAV_ITEMS, SOCIAL_LABEL } from "@/lib/site";
 import { getCurrentYear } from "@/lib/today";
 
 export async function SiteFooter() {
   const year = await getCurrentYear();
   const socials = getSocials();
+  const email = getContacts()[0]?.email;
 
   return (
     <footer className="mt-24 overflow-hidden border-t border-bone/15">
@@ -24,6 +25,17 @@ export async function SiteFooter() {
             ))}
           </ul>
         </nav>
+
+        {email && (
+          <div className="lg:col-span-3">
+            <h2 className="type-kicker text-ash">Write to us</h2>
+            <p className="mt-4">
+              <a href={`mailto:${email}`} className="link-wipe break-all hover:text-mustard">
+                {email}
+              </a>
+            </p>
+          </div>
+        )}
 
         {socials.length > 0 && (
           <div className="lg:col-span-3">

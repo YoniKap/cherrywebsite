@@ -22,5 +22,8 @@ export const socials: SocialLink[] = [
   },
 ];
 
-// TODO: add booking / press addresses.
-export const contacts: ContactChannel[] = [];
+// One address for everything for now. Add separate "booking" / "press"
+// entries later and the contact page labels them individually.
+export const contacts: ContactChannel[] = [
+  { purpose: "general", email: "cherrysupreza@gmail.com" },
+];

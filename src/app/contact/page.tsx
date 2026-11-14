@@ -35,7 +35,11 @@ export default function ContactPage() {
                 key={c.purpose}
                 className="grid gap-2 py-6 sm:grid-cols-[14rem_1fr] sm:items-baseline"
               >
-                <dt className="type-kicker text-ash">{PURPOSE_LABEL[c.purpose]}</dt>
+                <dt className="type-kicker text-ash">
+                  {contacts.length === 1
+                    ? "Booking, press & everything else"
+                    : PURPOSE_LABEL[c.purpose]}
+                </dt>
                 <dd className="text-title">
                   <a href={`mailto:${c.email}`} className="link-wipe break-all hover:text-mustard">
                     {c.email}
