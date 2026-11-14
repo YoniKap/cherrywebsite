@@ -51,16 +51,22 @@ export function MobileMenu() {
 
           <nav aria-label="Main" className="flex flex-1 flex-col justify-center py-10">
             <ol className="flex flex-col gap-1">
-              {NAV_ITEMS.map((item, i) => (
+              {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={close}
-                    className="group flex items-start gap-3 py-1 transition-colors hover:text-cherry focus-visible:text-cherry"
+                    className="group flex items-center gap-4 py-1 transition-colors hover:text-cherry focus-visible:text-cherry"
                   >
-                    <span aria-hidden="true" className="mt-2 type-kicker text-ash">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- tiny decorative SVG */}
+                    <img
+                      src="/images/doodles/cherry.svg"
+                      width={160}
+                      height={204}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-10 w-auto shrink-0 transition-transform duration-300 ease-snap group-hover:rotate-12"
+                    />
                     <span className="type-display text-[clamp(3rem,15vw,5.5rem)] leading-[0.95] transition-transform duration-300 ease-snap group-hover:translate-x-2">
                       {item.label}
                     </span>

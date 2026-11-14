@@ -1,7 +1,26 @@
 import type { ContactChannel, SocialLink } from "@/types/content";
 
-// TODO: add verified social profile URLs.
-export const socials: SocialLink[] = [];
+export const socials: SocialLink[] = [
+  {
+    platform: "instagram",
+    url: "https://www.instagram.com/cherrysupreza/",
+    handle: "@cherrysupreza",
+  },
+  {
+    platform: "youtube",
+    url: "https://www.youtube.com/@CherrySupreza",
+    handle: "@CherrySupreza",
+  },
+  {
+    platform: "spotify",
+    url: "https://open.spotify.com/artist/3s2ty8vjUuWSU5AORNoajy",
+  },
+  {
+    platform: "tiktok",
+    url: "https://www.tiktok.com/@cherrysupreza",
+    handle: "@cherrysupreza",
+  },
+];
 
 // TODO: add booking / press addresses.
 export const contacts: ContactChannel[] = [];

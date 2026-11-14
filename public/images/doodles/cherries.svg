@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -14 240 224" fill="none">
+  <defs>
+    <filter id="w" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="11"/>
+      <feDisplacementMap in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <radialGradient id="r" cx="32%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#ff4a3a"/>
+      <stop offset=".55" stop-color="#e8141c"/>
+      <stop offset="1" stop-color="#9e0b12"/>
+    </radialGradient>
+    <linearGradient id="l" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#2fa6d9"/>
+      <stop offset=".45" stop-color="#46c23c"/>
+      <stop offset="1" stop-color="#d9ec4a"/>
+    </linearGradient>
+    <path id="f" d="M0 -34 C -18 -46, -48 -36, -48 0 C -48 30, -22 48, 0 42 C 24 48, 48 30, 48 0 C 48 -36, 18 -46, 0 -34 Z"/>
+    <path id="lf" d="M0 0 C 10 -16, 40 -20, 52 -10 C 46 10, 20 18, 0 0 Z"/>
+  </defs>
+  <g filter="url(#w)" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#f1e4c9" stroke-width="14" fill="#f1e4c9">
+      <path d="M120 14 C 100 40, 74 80, 66 116 M120 14 C 136 44, 160 82, 172 112" fill="none"/>
+      <use href="#lf" transform="translate(124 18)"/>
+      <use href="#lf" transform="translate(116 18) scale(-1 1)"/>
+      <use href="#f" transform="translate(64 152)"/>
+      <use href="#f" transform="translate(174 148) rotate(8)"/>
+    </g>
+    <path d="M120 14 C 100 40, 74 80, 66 116 M120 14 C 136 44, 160 82, 172 112" stroke="#111" stroke-width="10"/>
+    <path d="M120 14 C 100 40, 74 80, 66 116 M120 14 C 136 44, 160 82, 172 112" stroke="#5cc93f" stroke-width="4.5"/>
+    <g fill="url(#l)" stroke="#111" stroke-width="4.5">
+      <use href="#lf" transform="translate(124 18)"/>
+      <use href="#lf" transform="translate(116 18) scale(-1 1)"/>
+    </g>
+    <path d="M126 17 C 142 10, 160 8, 174 8 M114 17 C 98 10, 80 8, 66 8" stroke="#111" stroke-width="2.2"/>
+    <g fill="url(#r)" stroke="#111" stroke-width="5.5">
+      <use href="#f" transform="translate(64 152)"/>
+      <use href="#f" transform="translate(174 148) rotate(8)"/>
+    </g>
+    <g fill="#fff">
+      <ellipse cx="42" cy="138" rx="7" ry="12" transform="rotate(-25 42 138)"/>
+      <circle cx="49" cy="160" r="3"/>
+      <ellipse cx="154" cy="132" rx="7" ry="12" transform="rotate(-20 154 132)"/>
+      <circle cx="160" cy="154" r="3"/>
+    </g>
+  </g>
+</svg>

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 /* ── Design tokens ────────────────────────────────────────────────
-   "Old records in a warm room": espresso-brown pages, aged-paper
-   type, tomato-cherry and mustard accents. Contrast on ink (#1a120d):
-   bone 14:1 · ash 6.4:1 (AA body) · mustard 8.4:1 (small-text accent)
-   cherry 3:1 → large text, fills and graphics only.
+   "Old records in a dark room": near-black brown pages, aged-paper
+   type, tomato-cherry and mustard accents. Contrast on ink (#0d0907):
+   bone 15.7:1 · ash 6.8:1 (AA body) · mustard 9.1:1 (small-text accent)
+   cherry 3.2:1 → large text, fills and graphics only.
    (Token names kept from v1 so components don't churn.)
    ───────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #1a120d; /* espresso */
-  --color-soot: #2a1d16; /* raised surfaces, sleeves */
+  --color-ink: #0d0907; /* near-black brown */
+  --color-soot: #1d1511; /* raised surfaces, sleeves */
   --color-bone: #f1e4c9; /* aged paper */
   --color-ash: #a8957a; /* faded taupe, secondary text */
   --color-cherry: #b3322a; /* tomato-cherry */
@@ -48,7 +48,7 @@
 
   body {
     /* Faint warm light from above, like a lamp over a record sleeve */
-    background-image: radial-gradient(120% 70% at 50% 0%, #2b1d14 0%, transparent 70%);
+    background-image: radial-gradient(120% 70% at 50% 0%, #1a110c 0%, transparent 70%);
     background-repeat: no-repeat;
     font-family: var(--font-sans);
     font-size: 1.0625rem;
@@ -217,6 +217,9 @@ body::after {
   overflow: clip;
   overflow-clip-margin: 0.12em;
   vertical-align: bottom;
+  /* room for Fraunces descenders (y, p) and the offset shadow inside the mask */
+  padding-bottom: 0.28em;
+  margin-bottom: -0.28em;
 }
 .rise {
   display: inline-block;
@@ -255,4 +258,41 @@ body::after {
     radial-gradient(circle, transparent 0 31%, #000 31.5% 32.5%, transparent 33%),
     repeating-radial-gradient(circle, #0d0907 0 1px, #1f1712 1.5px 3px);
   box-shadow: 0 0 0 1px rgb(241 228 201 / 0.08);
+}
+
+/* ── Sticker ─────────────────────────────────────────────────────
+   The logo lands like a sticker slapped onto the page, resting at a
+   slight tilt; straightens a touch on hover.
+   ───────────────────────────────────────────────────────────────── */
+@keyframes slap {
+  from {
+    opacity: 0;
+    scale: 1.12;
+    rotate: -9deg;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+.sticker {
+  rotate: -3deg;
+  filter: drop-shadow(0 1.25rem 2rem rgb(0 0 0 / 0.45));
+  animation: slap 0.7s var(--ease-snap) 0.15s both;
+  transition: rotate 0.5s var(--ease-snap);
+}
+.sticker:hover {
+  rotate: 0deg;
+}
+
+/* Doodles wiggle when poked */
+@keyframes wiggle {
+  25% {
+    rotate: var(--wiggle, 6deg);
+  }
+  75% {
+    rotate: calc(var(--wiggle, 6deg) * -1);
+  }
+}
+.doodle:hover {
+  animation: wiggle 0.5s var(--ease-snap);
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { getContacts, getSocials } from "@/lib/content";
+import { SOCIAL_LABEL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,7 +22,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageIntro kicker="05 / Get in touch" title="Contact" />
+      <PageIntro kicker="Get in touch" title="Contact" />
       <section className="container-site py-12">
         {contacts.length === 0 ? (
           <p className="border-y border-bone/15 py-14 font-serif text-2xl text-bone/80 italic">
@@ -50,7 +51,7 @@ export default function ContactPage() {
             {socials.map((s) => (
               <li key={s.platform}>
                 <ExternalLink href={s.url} className="link-wipe type-kicker hover:text-mustard">
-                  {s.handle ?? s.platform}
+                  {SOCIAL_LABEL[s.platform]}
                 </ExternalLink>
               </li>
             ))}

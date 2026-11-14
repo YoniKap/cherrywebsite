@@ -1,3 +1,5 @@
+import { Doodle } from "@/components/ui/Doodle";
+
 /* DRAFT COPY — needs band approval */
 export function ShowsEmpty() {
   return (
@@ -6,6 +8,7 @@ export function ShowsEmpty() {
       <p className="mt-3 font-serif text-2xl text-bone/80 italic">
         We&rsquo;re in the rehearsal room, breaking strings.
       </p>
+      <Doodle kind="snake" className="mt-8 w-56 sm:w-72" />
     </div>
   );
 }

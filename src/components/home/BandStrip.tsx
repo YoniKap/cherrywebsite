@@ -1,10 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Doodle, type DoodleKind } from "@/components/ui/Doodle";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getBand } from "@/lib/content";
 
 // Pinned slightly crooked, like gig posters on a wall; straightens on hover.
 const TILT = ["-rotate-[1.5deg]", "rotate-[1deg]", "-rotate-[0.75deg]", "rotate-[1.75deg]"];
+
+// Placeholder cards: a different logo-style doodle peeking from each corner.
+const PEEK: { kind: DoodleKind; className: string }[] = [
+  { kind: "cherry", className: "-top-[6%] -right-[8%] w-[48%] rotate-12" },
+  { kind: "snake", className: "top-[8%] -right-[24%] w-[85%] -rotate-[24deg]" },
+  { kind: "cherries", className: "-top-[4%] -right-[12%] w-[62%] rotate-6" },
+  { kind: "cherry", className: "-top-[8%] -right-[6%] w-[44%] -rotate-12" },
+];
 
 export function BandStrip() {
   const { members } = getBand();
@@ -34,7 +43,10 @@ export function BandStrip() {
                     aria-hidden="true"
                     className="absolute inset-0 flex items-end justify-start p-3"
                   >
-                    <div className="absolute -top-1/4 -right-1/4 size-full halftone opacity-60 [--halftone-size:6px]" />
+                    <Doodle
+                      kind={PEEK[i % PEEK.length]!.kind}
+                      className={`absolute ${PEEK[i % PEEK.length]!.className}`}
+                    />
                     <span className="relative type-display text-[clamp(6rem,24vw,13rem)] leading-[0.75] text-ink transition-colors duration-500 [-webkit-text-stroke:1px_var(--color-bone)] group-hover:text-cherry group-hover:[-webkit-text-stroke-color:var(--color-cherry)]">
                       {member.nickname.charAt(0)}
                     </span>

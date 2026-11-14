@@ -2,6 +2,7 @@ import Link from "next/link";
 import { EmbedFacade } from "@/components/music/EmbedFacade";
 import { PlatformLinks } from "@/components/music/PlatformLinks";
 import { ReleaseSleeve } from "@/components/music/ReleaseSleeve";
+import { Doodle } from "@/components/ui/Doodle";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RELEASE_TYPE_LABEL, getFeaturedRelease } from "@/lib/content";
 import { formatDate } from "@/lib/dates";
@@ -21,7 +22,13 @@ export function FeaturedRelease() {
       />
 
       <div className="mt-12 grid reveal items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <ReleaseSleeve release={release} className="max-w-xl lg:col-span-6" />
+        <div className="relative max-w-xl lg:col-span-6">
+          <ReleaseSleeve release={release} />
+          <Doodle
+            kind="cherries"
+            className="absolute -top-[7%] left-[60%] z-20 w-[26%] rotate-12"
+          />
+        </div>
 
         <div className="lg:col-span-5 lg:col-start-8">
           <p className="type-kicker text-ash">

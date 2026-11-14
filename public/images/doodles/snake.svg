@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 352 116" fill="none">
+  <style>
+    /* scales drift along the body: reads as slithering */
+    @keyframes slither { to { stroke-dashoffset: -20; } }
+    .scales { animation: slither 1.4s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .scales { animation: none; } }
+  </style>
+  <defs>
+    <filter id="w" x="-5%" y="-40%" width="110%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g filter="url(#w)" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#f1e4c9">
+      <path d="M22 66 C 52 30, 82 30, 108 58 S 164 88, 194 60 S 250 28, 282 50" stroke-width="32"/>
+      <path d="M8 76 L 22 66" stroke-width="20"/>
+      <path d="M272 40 C 288 30, 312 34, 320 48 C 312 62, 288 66, 272 58 Z" stroke-width="12" fill="#f1e4c9"/>
+    </g>
+    <!-- head -->
+    <path d="M323 49 L 338 49 M338 49 L 345 43 M338 49 L 345 55" stroke="#111" stroke-width="6"/>
+    <path d="M323 49 L 338 49 M338 49 L 345 43 M338 49 L 345 55" stroke="#f07aa0" stroke-width="3"/>
+    <path d="M272 40 C 288 30, 312 34, 320 48 C 312 62, 288 66, 272 58 Z" fill="#f5c21b" stroke="#111" stroke-width="4.5"/>
+    <!-- tail -->
+    <path d="M8 76 L 24 65" stroke="#111" stroke-width="13"/>
+    <path d="M9 75.5 L 24 65" stroke="#f5c21b" stroke-width="6"/>
+    <!-- body -->
+    <path d="M22 66 C 52 30, 82 30, 108 58 S 164 88, 194 60 S 250 28, 282 50" stroke="#111" stroke-width="25"/>
+    <path d="M22 66 C 52 30, 82 30, 108 58 S 164 88, 194 60 S 250 28, 282 50" stroke="#f5c21b" stroke-width="17"/>
+    <path class="scales" d="M22 66 C 52 30, 82 30, 108 58 S 164 88, 194 60 S 250 28, 282 50" stroke="#e8731c" stroke-width="10" stroke-dasharray="1 9"/>
+    <circle cx="302" cy="43" r="3.6" fill="#111"/>
+    <circle cx="303.2" cy="41.8" r="1.1" fill="#fff"/>
+    <ellipse cx="297" cy="54" rx="4.5" ry="2.6" fill="#f07aa0" opacity=".85"/>
+  </g>
+</svg>

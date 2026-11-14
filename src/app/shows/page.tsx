@@ -15,7 +15,7 @@ export default async function ShowsPage() {
 
   return (
     <>
-      <PageIntro kicker="02 / Live" title="Shows" />
+      <PageIntro kicker="Live" title="Shows" />
 
       <section aria-labelledby="upcoming-heading" className="container-site py-12">
         <h2 id="upcoming-heading" className="mb-6 type-kicker text-ash">

@@ -12,7 +12,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageIntro kicker="03 / The band" title="About" />
+      <PageIntro kicker="The band" title="About" />
 
       <section className="container-site grid gap-12 py-14 lg:grid-cols-12">
         <div className="space-y-5 text-lg leading-relaxed lg:col-span-6 lg:col-start-2">

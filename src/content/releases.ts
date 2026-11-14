@@ -13,8 +13,15 @@ export const releases: Release[] = [
     status: "released",
     releaseDate: "2026-09-24",
     featured: true,
-    // TODO: cover, streaming links and credits once provided.
-    links: [],
+    cover: {
+      src: "/images/releases/bad-bet.webp",
+      alt: "Bad Bet cover: the words BAD BET in yellow serif capitals with a red offset shadow on black",
+      width: 640,
+      height: 640,
+    },
+    // TODO: credits once provided; other platforms as they're confirmed.
+    links: [{ platform: "spotify", url: "https://open.spotify.com/track/387HYKlnIRujuzGLJPIANM" }],
+    embed: { provider: "spotify", id: "track/387HYKlnIRujuzGLJPIANM" },
   },
   {
     slug: "numba-six",

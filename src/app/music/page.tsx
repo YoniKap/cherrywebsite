@@ -14,7 +14,7 @@ export default function MusicPage() {
 
   return (
     <>
-      <PageIntro kicker="01 / Discography" title="Music">
+      <PageIntro kicker="Discography" title="Music">
         Singles, records, and whatever comes next.
       </PageIntro>
 
