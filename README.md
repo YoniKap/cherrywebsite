@@ -33,6 +33,26 @@ sudo env "PATH=$PATH" pnpm exec playwright install-deps chromium   # system libr
 
 CI (`.github/workflows/ci.yml`) runs format check, lint, typecheck, unit tests, build and e2e on every push and PR.
 
+## Deployment (Cloudflare Workers)
+
+Built with the OpenNext Cloudflare adapter (`wrangler.jsonc`, `open-next.config.ts`).
+
+| Command           | What it does                                              |
+| ----------------- | --------------------------------------------------------- |
+| `pnpm cf:build`   | Build + adapt for Workers (output in `.open-next/`)       |
+| `pnpm cf:preview` | Run the built Worker locally in the Workers runtime       |
+| `pnpm deploy`     | Build and deploy from your machine (needs wrangler login) |
+
+Cloudflare dashboard (Workers Builds, connected to GitHub):
+
+- Build command: `pnpm run cf:build`
+- Deploy command: `pnpm exec opennextjs-cloudflare deploy`
+- Non-production branch deploy command: `pnpm exec opennextjs-cloudflare upload`
+
+Next.js Cache Components is turned **off**: under the Workers runtime it hangs requests.
+All pages are static, so date-dependent bits (upcoming vs. past shows, footer year) update
+on each deploy.
+
 ## Editing content
 
 All band content lives as typed data in `src/content/`. Pages read it through `src/lib/content.ts`.

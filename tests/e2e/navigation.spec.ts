@@ -17,14 +17,11 @@ test.describe("routes", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText("bad bet");
   });
 
-  // With Cache Components the shared [slug] shell streams first, so unknown
-  // or draft slugs render the 404 UI + noindex under a 200 ("soft 404").
-  // Documented Next 16 behaviour; noindex keeps them out of search results.
   for (const slug of ["numba-six", "not-a-real-release"]) {
-    test(`/music/${slug} renders not-found and is noindexed`, async ({ page }) => {
-      await page.goto(`/music/${slug}`);
+    test(`/music/${slug} is a real 404`, async ({ page }) => {
+      const res = await page.goto(`/music/${slug}`);
+      expect(res?.status()).toBe(404);
       await expect(page.getByRole("heading", { level: 1 })).toContainText("bad bet");
-      await expect(page.locator('meta[name="robots"][content*="noindex"]').first()).toBeAttached();
     });
   }
 

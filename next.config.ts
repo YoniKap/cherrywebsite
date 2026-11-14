@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Cache Components is deliberately OFF: on Cloudflare Workers (OpenNext) it
+  // hangs requests at runtime. Classic static rendering is used instead.
   turbopack: {
     rules: {
       "*.css": {

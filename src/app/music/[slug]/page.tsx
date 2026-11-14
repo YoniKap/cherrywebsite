@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { RELEASE_TYPE_LABEL, getReleaseBySlug, getReleases } from "@/lib/content";
 import { formatDate } from "@/lib/dates";
 
+// Only slugs from generateStaticParams exist; anything else is a real 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getReleases().map((r) => ({ slug: r.slug }));
 }
@@ -20,8 +23,6 @@ export async function generateMetadata({ params }: PageProps<"/music/[slug]">): 
 
 // Phase 1 stub — artwork, links, credits and video arrive in Phase 3.
 export default async function ReleasePage({ params }: PageProps<"/music/[slug]">) {
-  // Unknown/draft slugs render not-found + noindex. Under Cache Components the
-  // shared shell has already streamed, so the HTTP status stays 200 (soft 404).
   const { slug } = await params;
   const release = getReleaseBySlug(slug);
   if (!release) notFound();
