@@ -366,6 +366,12 @@ body::after {
   position: fixed;
   z-index: -1;
 }
+/* Size the page-wide pools by the larger screen side, so tall, narrow
+   phones get the same big washes of colour as wide desktops. */
+.liquid-page > span {
+  width: max(60vw, 70vh);
+  translate: -25% 0;
+}
 .liquid > span:nth-child(4) {
   top: 60%;
   left: 60%;
