@@ -5,7 +5,7 @@
  */
 import { band } from "@/content/band";
 import { mediaItems, videos } from "@/content/media";
-import { releases } from "@/content/releases";
+import { mysteryReleaseCount, releases } from "@/content/releases";
 import { shows } from "@/content/shows";
 import { contacts, socials } from "@/content/socials";
 import type { ISODate, Release, ReleaseType, Show } from "@/types/content";
@@ -25,6 +25,10 @@ export function isListed(release: Release, includeDrafts: boolean = INCLUDE_DRAF
 /** Newest first; undated releases last. */
 export function sortReleases(list: readonly Release[]): Release[] {
   return [...list].sort((a, b) => (b.releaseDate ?? "").localeCompare(a.releaseDate ?? ""));
+}
+
+export function getMysteryReleaseCount(): number {
+  return mysteryReleaseCount;
 }
 
 export function getReleases(includeDrafts: boolean = INCLUDE_DRAFTS): Release[] {

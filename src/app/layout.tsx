@@ -48,6 +48,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} ${fraunces.variable} ${courierPrime.variable} antialiased`}
     >
       <body className="flex min-h-dvh flex-col">
+        {/* Page-wide liquid-light colour pools, fixed behind everything */}
+        <div aria-hidden="true" className="liquid liquid-page">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
         <SkipLink />
         {/* Wrap in <MotionProvider> once the first m.* component lands. */}
         <SiteHeader />

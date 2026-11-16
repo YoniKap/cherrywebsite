@@ -57,8 +57,8 @@ describe("content integrity", () => {
     for (const r of releases) expect(r.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
   });
 
-  it("dates every non-draft release", () => {
-    for (const r of releases.filter((r) => r.status !== "draft")) {
+  it("dates every released or archived release", () => {
+    for (const r of releases.filter((r) => r.status === "released" || r.status === "archived")) {
       expect(r.releaseDate, `${r.slug} needs a releaseDate`).toBeDefined();
     }
   });
@@ -93,7 +93,7 @@ describe("content integrity", () => {
   it("does not leave announced releases in the past", () => {
     // If this fails, a release came out: flip its status to "released".
     const today = toISODate(new Date());
-    for (const r of releases.filter((r) => r.status === "announced")) {
+    for (const r of releases.filter((r) => r.status === "announced" && r.releaseDate)) {
       expect(r.releaseDate! >= today, `${r.slug} is announced but dated in the past`).toBe(true);
     }
   });

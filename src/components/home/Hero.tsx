@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { RELEASE_TYPE_LABEL, getBand, getFeaturedRelease } from "@/lib/content";
 import { LOGO } from "@/lib/site";
+import { PsychedelicPortal } from "./PsychedelicPortal";
 
 function RisingWord({
   word,
@@ -30,10 +31,13 @@ export function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col overflow-clip">
+      {/* Liquid kaleidoscope "portal" behind the art (WebGL, decorative) */}
+      <PsychedelicPortal className="fade-up absolute top-[2%] -right-[30%] -z-20 size-[110vw] [--delay:0.2s] sm:-right-[12%] sm:size-[75vw] lg:top-[-10%] lg:right-[-2%] lg:size-[min(56vw,58rem)]" />
+
       {/* Warm halftone sun behind the art */}
       <div
         aria-hidden="true"
-        className="fade-up absolute top-[2%] -right-[30%] -z-20 size-[110vw] halftone opacity-40 [--delay:0.1s] [--halftone-color:var(--color-mustard)] sm:-right-[12%] sm:size-[75vw] lg:top-[-10%] lg:right-[-2%] lg:size-[min(56vw,58rem)] lg:[--halftone-size:12px]"
+        className="fade-up absolute top-[2%] -right-[30%] -z-20 size-[110vw] halftone opacity-25 mix-blend-multiply [--delay:0.1s] [--halftone-color:var(--color-ink)] sm:-right-[12%] sm:size-[75vw] lg:top-[-10%] lg:right-[-2%] lg:size-[min(56vw,58rem)] lg:[--halftone-size:12px]"
       />
 
       {/* Key art: a band photo if supplied, else the hand-drawn logo, slapped on like a sticker */}
@@ -63,7 +67,7 @@ export function Hero() {
       <div className="container-site flex flex-1 flex-col justify-end pt-24 pb-8 sm:pb-12">
         {/* Poster headline: soft 70s serif, cream on espresso, misregistered cherry shadow.
             "Supreza" drops a line, slanted and pushed right, like a record-sleeve title. */}
-        <h1 aria-label={band.name} className="type-poster text-display">
+        <h1 aria-label={band.name} className="trippy type-poster text-display">
           <RisingWord word="Cherry" className="block" />
           <RisingWord word="Supreza" offset={4} className="block pl-[0.6em] italic sm:pl-[1.2em]" />
         </h1>

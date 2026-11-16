@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VideoFacade } from "@/components/media/VideoFacade";
 import { EmbedFacade } from "@/components/music/EmbedFacade";
 import { PlatformLinks } from "@/components/music/PlatformLinks";
 import { ReleaseSleeve } from "@/components/music/ReleaseSleeve";
@@ -49,6 +50,12 @@ export function FeaturedRelease() {
 
           <div className="mt-8 space-y-6">
             {release.embed && <EmbedFacade embed={release.embed} title={release.title} />}
+            {release.videos?.[0] && (
+              <figure>
+                <VideoFacade video={release.videos[0]} />
+                <figcaption className="mt-2 type-kicker text-ash">Music video</figcaption>
+              </figure>
+            )}
             <PlatformLinks links={release.links} title={release.title} />
             <p className="type-kicker">
               <Link href={`/music/${release.slug}`} className="link-wipe hover:text-mustard">

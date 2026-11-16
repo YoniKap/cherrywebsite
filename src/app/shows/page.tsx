@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { ShowList } from "@/components/shows/ShowList";
 import { ShowsEmpty } from "@/components/shows/ShowsEmpty";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { getShows } from "@/lib/content";
 import { getToday } from "@/lib/today";
+import { SHOWS_ENABLED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Shows",
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ShowsPage() {
+  if (!SHOWS_ENABLED) notFound();
   const { upcoming } = getShows(await getToday());
 
   return (

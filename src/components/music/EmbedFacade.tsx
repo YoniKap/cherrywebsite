@@ -57,10 +57,7 @@ export function EmbedFacade({ embed, title }: { embed: Embed; title: string }) {
       <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-cherry text-bone transition-transform group-hover:scale-105">
         <Play aria-hidden="true" className="size-4 translate-x-px fill-current" />
       </span>
-      <span>
-        <span className="block">Play {title}</span>
-        <span className="block type-kicker text-ash">Loads the {provider.label} player</span>
-      </span>
+      <span>Play on {provider.label}</span>
     </button>
   );
 }

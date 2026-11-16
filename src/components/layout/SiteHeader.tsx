@@ -7,7 +7,7 @@ import { NavItems } from "./NavItems";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-bone/15 bg-ink">
+    <header className="sticky top-0 z-40 border-b border-bone/15 bg-ink/75 backdrop-blur-md">
       <div className="container-site flex h-16 items-center justify-between gap-6">
         <Link href="/" className="text-xl transition-opacity hover:opacity-80 sm:text-2xl">
           <Wordmark />

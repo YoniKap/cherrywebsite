@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { VideoFacade } from "@/components/media/VideoFacade";
+import { PlatformLinks } from "@/components/music/PlatformLinks";
 import { RELEASE_TYPE_LABEL, getReleaseBySlug, getReleases } from "@/lib/content";
 import { formatDate } from "@/lib/dates";
 
@@ -37,13 +39,24 @@ export default async function ReleasePage({ params }: PageProps<"/music/[slug]">
       <h1 className="mt-6 type-display text-headline">{release.title}</h1>
       <p className="mt-6 type-kicker text-ash">
         {RELEASE_TYPE_LABEL[release.type]}
-        {release.releaseDate && (
+        {release.releaseDate ? (
           <>
             {" · "}
             <time dateTime={release.releaseDate}>{formatDate(release.releaseDate)}</time>
           </>
+        ) : (
+          release.status === "announced" && <span className="text-cherry"> · Coming soon</span>
         )}
       </p>
+      <div className="mt-10 max-w-3xl space-y-8">
+        <PlatformLinks links={release.links} title={release.title} />
+        {release.videos?.map((video) => (
+          <figure key={video.id}>
+            <VideoFacade video={video} />
+            <figcaption className="mt-2 type-kicker text-ash">{video.title}</figcaption>
+          </figure>
+        ))}
+      </div>
     </article>
   );
 }

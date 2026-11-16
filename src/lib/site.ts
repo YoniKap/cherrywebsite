@@ -4,7 +4,13 @@ export const SITE = {
     "Official website of Cherry Supreza: alternative rock with funk-bent grooves, crooked guitars and grunge noise.",
 } as const;
 
-export const NAV_ITEMS = [
+/**
+ * Shows are hidden for now: off the nav and homepage, and /shows is a 404.
+ * Flip to true to bring the whole section back (content lives in content/shows.ts).
+ */
+export const SHOWS_ENABLED = false;
+
+const ALL_NAV_ITEMS = [
   { href: "/music", label: "Music" },
   { href: "/shows", label: "Shows" },
   { href: "/about", label: "About" },
@@ -12,7 +18,11 @@ export const NAV_ITEMS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export type NavItem = (typeof NAV_ITEMS)[number];
+export type NavItem = (typeof ALL_NAV_ITEMS)[number];
+
+export const NAV_ITEMS: readonly NavItem[] = ALL_NAV_ITEMS.filter(
+  (item) => SHOWS_ENABLED || item.href !== "/shows",
+);
 
 export function isActivePath(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);

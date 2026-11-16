@@ -17,7 +17,7 @@ test.describe("routes", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText("bad bet");
   });
 
-  for (const slug of ["numba-six", "not-a-real-release"]) {
+  for (const slug of ["not-a-real-release"]) {
     test(`/music/${slug} is a real 404`, async ({ page }) => {
       const res = await page.goto(`/music/${slug}`);
       expect(res?.status()).toBe(404);
@@ -86,9 +86,9 @@ test.describe("mobile menu", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Menu" }).click();
     const dialog = page.getByRole("dialog", { name: "Menu" });
-    await dialog.getByRole("link", { name: "Shows" }).click();
-    await expect(page).toHaveURL("/shows");
+    await dialog.getByRole("link", { name: "About" }).click();
+    await expect(page).toHaveURL("/about");
     await expect(dialog).toBeHidden();
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Shows");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("About");
   });
 });

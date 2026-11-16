@@ -5,7 +5,7 @@
 
 /**
  * - draft: work in progress, never rendered in production
- * - announced: confirmed and dated, shown as "upcoming"
+ * - announced: confirmed and coming, shown as "coming soon" (date optional until announced)
  * - released: out in the world, full page
  * - archived: still listed, de-emphasized
  */
@@ -71,7 +71,7 @@ export interface Release {
   title: string;
   type: ReleaseType;
   status: PublishStatus;
-  /** Required for everything except drafts. */
+  /** Required once released; optional for drafts and undated announcements. */
   releaseDate?: ISODate;
   /** Absent → typographic fallback cover. Never a stock image. */
   cover?: ImageAsset;

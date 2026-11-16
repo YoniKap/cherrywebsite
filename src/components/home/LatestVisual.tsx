@@ -1,19 +1,22 @@
 import Image from "next/image";
 import { VideoFacade } from "@/components/media/VideoFacade";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getMedia } from "@/lib/content";
+import { getFeaturedRelease, getMedia } from "@/lib/content";
+import { SHOWS_ENABLED } from "@/lib/site";
 
-/** Newest video, else newest photo. Hidden entirely until media exists. */
+/** Newest video, else newest photo. Hidden entirely until media exists.
+ *  Skips videos already playing in the featured-release block above. */
 export function LatestVisual() {
   const { videos, items } = getMedia();
-  const video = videos[0];
+  const featuredVideoIds = new Set(getFeaturedRelease()?.videos?.map((v) => v.id));
+  const video = videos.find((v) => !featuredVideoIds.has(v.id));
   const photo = items[0];
   if (!video && !photo) return null;
 
   return (
     <section aria-labelledby="visual-heading" className="container-site py-20 sm:py-28">
       <SectionHeading
-        side="D"
+        side={SHOWS_ENABLED ? "D" : "C"}
         title="Seen lately"
         id="visual-heading"
         href="/media"
