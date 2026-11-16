@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { Postcard } from "@/components/contact/Postcard";
 import { getContacts, getFeaturedRelease, getReleases, getSocials } from "@/lib/content";
 import { LOGO, NAV_ITEMS, SOCIAL_LABEL } from "@/lib/site";
 import { getCurrentYear } from "@/lib/today";
+import { HideOnPath } from "./HideOnPath";
 
 /** Ticker lines come straight from content, so they're always true. */
 function tickerItems(): string[] {
@@ -18,7 +20,7 @@ function tickerItems(): string[] {
 export async function SiteFooter() {
   const year = await getCurrentYear();
   const socials = getSocials();
-  const email = getContacts()[0]?.email;
+  const contacts = getContacts();
   const ticker = tickerItems();
 
   return (
@@ -45,18 +47,12 @@ export async function SiteFooter() {
 
       {/* ── Main ──────────────────────────────────────────────────── */}
       <div className="container-site grid grid-cols-2 gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
-        {email && (
+        {contacts.length > 0 && (
           <div className="col-span-2 lg:col-span-6">
-            <h2 className="type-kicker text-ash">Write to us</h2>
-            <a
-              href={`mailto:${email}`}
-              className="group mt-4 inline-block font-serif text-[clamp(1.75rem,3.4vw,3rem)] leading-tight italic"
-            >
-              <span className="link-wipe group-hover:text-mustard">
-                {email.split("@")[0]}@<wbr />
-                {email.split("@")[1]}
-              </span>
-            </a>
+            {/* The Contact page shows the full-size card; don't repeat it there. */}
+            <HideOnPath path="/contact">
+              <Postcard contacts={contacts} compact id="footer-postcard" className="max-w-2xl" />
+            </HideOnPath>
           </div>
         )}
 
