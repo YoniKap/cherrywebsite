@@ -14,6 +14,12 @@ export const band: Band = {
       name: "Erad Tamam",
       nickname: "Cherry",
       roles: ["lead vocals", "rhythm guitar"],
+      portrait: {
+        src: "/images/members/cherry.webp",
+        alt: "Cherry with head thrown back and eyes closed, playing guitar on a dark stage in black and white",
+        width: 720,
+        height: 900,
+      },
     },
     {
       slug: "yonatan-kaplounov",
@@ -31,11 +37,11 @@ export const band: Band = {
     {
       slug: "adam-hersonsky",
       name: "Adam Hersonsky",
-      nickname: "Racoon",
+      nickname: "Raccoon",
       roles: ["bass"],
       portrait: {
         src: "/images/members/racoon.webp",
-        alt: "Racoon playing a red bass guitar under a single stage light",
+        alt: "Raccoon playing a red bass guitar under a single stage light",
         width: 720,
         height: 900,
         credit: "Dani Photography",

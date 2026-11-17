@@ -38,7 +38,7 @@ export default function TypeSpecimen() {
       </section>
       <section>
         <p className="type-kicker text-ash">Serif accent — Fraunces italic</p>
-        <p className="mt-4 font-serif text-5xl text-cherry italic">Cherry · Kappi · Racoon · Bon</p>
+        <p className="mt-4 font-serif text-5xl text-cherry italic">Cherry · Kappi · Raccoon · Bon</p>
       </section>
       <section className="max-w-[65ch]">
         <p className="type-kicker text-ash">Body — Archivo 17px</p>

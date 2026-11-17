@@ -7,7 +7,7 @@ import { getBand } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Cherry Supreza: Cherry, Kappi, Racoon and Bon.",
+  description: "Cherry Supreza: Cherry, Kappi, Raccoon and Bon.",
 };
 
 // Pinned to the wall at slightly different angles; straighten on hover.
